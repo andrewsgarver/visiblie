@@ -17,34 +17,28 @@ function createData(id, date, name, email, phone, platform, rating) {
 
 const rows = [
 	createData(0, '16 Mar, 2019', 'Elvis Presley', 'elvis@gmail.com', '555-555-5555', 'Google', 5),
-	createData(1, '16 Mar, 2019', 'Paul McCartney', 'paul@gmail.com', '555-555-5555', 'Google', 5),
+	createData(1, '16 Mar, 2019', 'Paul McCartney', 'paul@gmail.com', '555-555-5555', 'Google', 4),
 	createData(2, '16 Mar, 2019', 'Tom Scholz', 'tom@gmail.com', '555-555-5555', 'Facebook', 4),
-	createData(3, '16 Mar, 2019', 'Michael Jackson', 'michael@gmail.com', '555-555-5555', 'Yelp', 5),
-	createData(4, '15 Mar, 2019', 'Bruce Springsteen', 'bruce@gmail.com', '555-555-5555', 'Google', 2),
+	createData(3, '16 Mar, 2019', 'Michael Jackson', 'michael@gmail.com', '555-555-5555', 'Yelp', 3),
+	createData(4, '15 Mar, 2019', 'Bruce Springsteen', 'bruce@gmail.com', '555-555-5555', 'Google', 5),
 ];
 
 function preventDefault(event) {
 	event.preventDefault();
 }
 
-const useStyles = makeStyles(theme => ({
-	seeMore: {
-		marginTop: theme.spacing(3),
-	},
-}));
 
 export default function Orders() {
 	const classes = useStyles();
+
 	return (
 		<React.Fragment>
-			<Title>Recent Ratings</Title>
+			<Title>Recent Reviews</Title>
 			<Table size="small">
 				<TableHead>
 					<TableRow>
 						<TableCell>Date</TableCell>
 						<TableCell>Name</TableCell>
-						<TableCell>Email</TableCell>
-						<TableCell>Phone</TableCell>
 						<TableCell>Platform</TableCell>
 						<TableCell align="right">Rating</TableCell>
 					</TableRow>
@@ -54,10 +48,8 @@ export default function Orders() {
 						<TableRow key={row.id}>
 							<TableCell>{row.date}</TableCell>
 							<TableCell>{row.name}</TableCell>
-							<TableCell>{row.email}</TableCell>
-							<TableCell>{row.phone}</TableCell>
 							<TableCell>
-								<SocialMediaIcon platform={row.platform}/>
+								<SocialMediaIcon height="32px" width="32px" platform={row.platform}/>
 							</TableCell>
 							<TableCell align="right">
 								<Stars numStars={row.rating} />
@@ -74,3 +66,9 @@ export default function Orders() {
 		</React.Fragment>
 	);
 }
+
+const useStyles = makeStyles(theme => ({
+	seeMore: {
+		marginTop: theme.spacing(3),
+	},
+}));
