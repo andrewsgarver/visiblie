@@ -18,7 +18,7 @@ import Link from '@material-ui/core/Link';
 import MenuIcon from '@material-ui/icons/Menu';
 import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
 import NotificationsIcon from '@material-ui/icons/Notifications';
-import { mainListItems, secondaryListItems } from './../components/ListItems';
+import { mainListItems, secondaryListItems, bottomListItems } from './../components/MenuItems';
 import RecentReviewChart from './../components/RecentReviewChart';
 import AverageReviewCard from './../components/AverageReviewCard';
 import Reviews from './../components/Reviews';
@@ -81,7 +81,7 @@ export default function Dashboard() {
 			>
 				<div className={classes.toolbarIcon}>
 					<Typography component="h1" variant="h5" color="inherit" noWrap className={classes.drawerTitle}>
-						<em>UpShot</em>
+						<em>Visiblie</em>
           			</Typography>
 					<img src={Logo} height="40px" width="auto" alt="logo" className={classes.drawerLogo}/>
 					<IconButton onClick={handleDrawerClose}>
@@ -89,9 +89,16 @@ export default function Dashboard() {
 					</IconButton>
 				</div>
 				<Divider />
-				<List>{mainListItems}</List>
-				<Divider />
-				<List className={classes.marginTop}>{secondaryListItems}</List>
+				<Grid container direction="column" justify="space-between" className={classes.gHeightFull}>
+					<Grid item>
+						<List>{mainListItems}</List>
+						<Divider />
+						<List className={classes.marginTop}>{secondaryListItems}</List>
+					</Grid>
+					<Grid>
+						<List className={classes.bottomItems}>{bottomListItems}</List>
+					</Grid>
+				</Grid>
 			</Drawer>
 			<main className={classes.content}>
 				<div className={classes.appBarSpacer} />
@@ -217,5 +224,8 @@ const useStyles = makeStyles(theme => ({
 		position: 'relative',
 		right: 20,
 		bottom: 2
+	},
+	gHeightFull: {
+		height: '100%'
 	}
 }));

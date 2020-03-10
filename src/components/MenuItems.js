@@ -8,6 +8,8 @@ import PeopleIcon from '@material-ui/icons/People';
 import BarChartIcon from '@material-ui/icons/BarChart';
 import SettingsIcon from '@material-ui/icons/Settings';
 import MessageIcon from '@material-ui/icons/Message';
+import ExitToAppIcon from '@material-ui/icons/ExitToApp';
+import { Link } from 'react-router-dom'
 
 export const mainListItems = (
 	<div>
@@ -48,5 +50,18 @@ export const secondaryListItems = (
 			</ListItemIcon>
 			<ListItemText primary="Notification Settings" />
 		</ListItem>
+	</div>
+);
+
+export const bottomListItems = (
+	<div>
+		<Link to="/logout">
+			<ListItem button>
+				<ListItemIcon>
+					<ExitToAppIcon />
+				</ListItemIcon>
+					<ListItemText primary="Logout" />
+			</ListItem>
+		</Link>
 	</div>
 );
