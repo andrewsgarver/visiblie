@@ -12,9 +12,10 @@ import Dashboard from './../views/Dashboard'
 export default function() {
 	return (
 		<Router>
-			<Redirect exact from="/" to="/login" />
 
 			<Switch>
+				<Redirect exact from="/" to="/login" />
+				
 				<Route path="/logout">
 					<Logout />
 				</Route>
