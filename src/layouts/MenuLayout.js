@@ -25,6 +25,7 @@ import BarChartIcon from '@material-ui/icons/BarChart';
 import SettingsIcon from '@material-ui/icons/Settings';
 import MessageIcon from '@material-ui/icons/Message';
 import ExitToAppIcon from '@material-ui/icons/ExitToApp';
+import MaterialLink from '@material-ui/core/Link'
 import { Link } from 'react-router-dom'
 import Box from '@material-ui/core/Box';
 import Container from '@material-ui/core/Container';
@@ -34,9 +35,9 @@ function Copyright() {
 	return (
 		<Typography variant="body2" color="textSecondary" align="center">
 			{'Copyright © '}
-			<Link color="inherit" href="https://visiblie.com/">
+			<MaterialLink color="inherit" href="https://visiblie.com/" target="_blank">
 				Visiblie
-      		</Link>{' '}
+      		</MaterialLink>{' '}
 			{new Date().getFullYear()}
 			{'.'}
 		</Typography>
