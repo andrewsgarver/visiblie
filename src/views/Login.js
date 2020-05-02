@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { baseStyles } from './../styles'
 import { makeStyles } from '@material-ui/core/styles';
 import clsx from 'clsx';
@@ -8,35 +8,67 @@ import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button'
 import Grid from '@material-ui/core/Grid'
 import { useHistory } from 'react-router-dom'
+import http from '@/http'
 
 export default function(props) {
 	const bs = baseStyles()
 	const cs = componentStyles()
 	const history = useHistory()
 
-	function login() {
+	const [email, setEmail] = useState('')
+	const [password, setPassword] = useState('')
+
+	const login = async (e) => {
+		e.preventDefault()
+
 		console.log('Logging in: ')
-		history.push('/dashboard')
+		console.log(email, password)
+		const res = await http.auth.login({
+			email,
+			password
+		})
+
+		console.log(res)
+		// history.push('/dashboard')
 	}
 
 	return (
 		<div className={clsx(bs.fullPage, cs.backgroundGradient)}>
-			<Card className={clsx(bs.width4, bs.absoluteCenter)}>
-				<CardContent>
-					<h1 className={bs.textCenter}>Visiblie</h1>
-					<Grid container spacing={2} justify="center">
-						<Grid item xs={12}>
-							<TextField label="Email" type="email" className={bs.widthFull} />
+			<form onSubmit={login} >
+				<Card className={clsx(bs.width4, bs.absoluteCenter)}>
+					<CardContent>
+						<h1 className={bs.textCenter}>Visiblie</h1>
+						<Grid container spacing={2} justify="center">
+							<Grid item xs={12}>
+								<TextField 
+									label="Email" 
+									type="email" 
+									className={bs.widthFull} 
+									value={email}
+									onChange={e => setEmail(e.target.value)}
+								/>
+							</Grid>
+							<Grid item xs={12}>
+								<TextField 
+									label="Password" 
+									type="password" 
+									className={bs.widthFull} 
+									value={password}
+									onChange={e => setPassword(e.target.value)}
+								/>
+							</Grid>
+							<Grid item xs={6}>
+								<Button 
+								type="submit" 
+								variant="contained" 
+								color="primary" 
+								className={bs.widthFull
+							}>Login</Button>
+							</Grid>
 						</Grid>
-						<Grid item xs={12}>
-							<TextField label="Password" type="password" className={bs.widthFull} />
-						</Grid>
-						<Grid item xs={6}>
-							<Button variant="contained" color="primary" className={bs.widthFull} onClick={login}>Login</Button>
-						</Grid>
-					</Grid>
-				</CardContent>
-			</Card>
+					</CardContent>
+				</Card>
+			</form>
 		</div>
 	)
 }
