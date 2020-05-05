@@ -6,6 +6,7 @@ import {
 	Redirect
   } from "react-router-dom";
 import Login from './../views/Login'
+import Register from './../views/Register'
 import Logout from './../components/Logout'
 import Dashboard from './../views/Dashboard'
 import Customers from './../views/Customers'
@@ -20,6 +21,9 @@ export default function() {
 			<Switch>
 				<Redirect exact from="/" to="/login" />
 				
+				<Route path="/register">
+					<Register />
+				</Route>
 				<Route path="/login">
 					<Login />
 				</Route>

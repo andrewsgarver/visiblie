@@ -17,4 +17,16 @@ export default {
 	marginBottom: {
 		marginBottom: 20
 	},
+	marginTopSmall: {
+		marginTop: 10
+	},
+	marginBottomSmall: {
+		marginBottom: 10
+	},
+	marginNone: {
+		margin: 0
+	},
+	paddingMedium: {
+		padding: 20
+	}
 }
