@@ -30,20 +30,15 @@ export default function(props) {
 	const login = async (e) => {
 		e.preventDefault()
 
-		let response
-		try {
-			response = await http.auth.login({
-				email,
-				password
-			})
-		} catch(error) {
-			console.log(error)
-		}
+		const response = await http.auth.login({
+			email,
+			password
+		})
 
 		if (response.status === 200) {
 			history.push('/dashboard')
 		} else {
-			console.log(response)
+			setError(response.data.error)
 		}
 	}
 
@@ -88,6 +83,12 @@ export default function(props) {
 									className={bs.widthFull
 								}>Login</Button>
 								</Grid>
+								{
+									error &&
+									<Grid item xs={12}>
+										<p className={clsx(bs.textDanger, bs.textCenter, bs.marginNone)}>{error}</p>
+									</Grid>
+								}
 							</Grid>
 						</CardContent>
 					</Card>

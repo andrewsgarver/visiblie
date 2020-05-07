@@ -4,5 +4,8 @@ export default {
 	},
 	textWhite: {
 		color: 'white'
+	},
+	textDanger: {
+		color: 'red'
 	}
 }
